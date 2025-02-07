@@ -1,4 +1,4 @@
-# Poller-Backend
+# Poller-Server
 
 This is the server side of the poller application
 
