@@ -23,6 +23,7 @@ public class Vote {
     @ManyToOne
     @JoinColumn(name = "option_id")
     private Option option;
+
     private LocalDateTime votedOn;
 
     public Vote(Poll poll, LocalDateTime votedOn, Option option) {

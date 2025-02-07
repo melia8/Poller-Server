@@ -22,6 +22,9 @@ public class Poll {
     @OneToMany
     private List<Option> options;
 
+    @OneToMany(mappedBy = "poll")
+    private List<Vote> votes;
+
     public Poll(String description, List<Option> options) {
         this.description = description;
         this.options = options;
