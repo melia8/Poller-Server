@@ -5,6 +5,7 @@ import com.melia.dizplai.poller.repositories.PollRepository;
 import com.melia.dizplai.poller.repositories.VoteRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -14,6 +15,7 @@ import java.util.stream.IntStream;
 
 @Component
 @AllArgsConstructor
+@Profile("!test")
 public class DataLoader implements CommandLineRunner {
     private final OptionRepository optionRepo;
     private final PollRepository pollRepo;
@@ -43,12 +45,12 @@ public class DataLoader implements CommandLineRunner {
         IntStream.range(0, 5).forEach((ignore) -> voteRepo.save(new Vote(champsPoll, LocalDateTime.now(), barcelonaCL)));
 
         //Set up the current poll
-        Option liverpoool = optionRepo.save(new Option("Liverpool"));
+        Option liverpool = optionRepo.save(new Option("Liverpool"));
         Option manCity = optionRepo.save(new Option("Manchester City"));
         Option arsenal = optionRepo.save(new Option("Arsenal"));
-        Option accrington = optionRepo.save(new Option("Accrington Stanley"));
+        Option chelsea = optionRepo.save(new Option("Chelsea"));
 
-        List<Option> options = Arrays.asList(liverpoool, manCity, arsenal, accrington);
+        List<Option> options = Arrays.asList(liverpool, manCity, arsenal, chelsea);
         pollRepo.save(new Poll("Who will win the Premier League?", options));
     }
 }
