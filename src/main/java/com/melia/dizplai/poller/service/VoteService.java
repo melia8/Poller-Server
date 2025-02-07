@@ -4,6 +4,7 @@ import com.melia.dizplai.poller.domain.Option;
 import com.melia.dizplai.poller.domain.Poll;
 import com.melia.dizplai.poller.domain.Vote;
 import com.melia.dizplai.poller.dto.Mapper;
+import com.melia.dizplai.poller.dto.VoteCreateDto;
 import com.melia.dizplai.poller.dto.VoteDto;
 import com.melia.dizplai.poller.repositories.OptionRepository;
 import com.melia.dizplai.poller.repositories.PollRepository;
@@ -30,7 +31,7 @@ public class VoteService {
     }
 
     @Transactional
-    public VoteDto saveVote(VoteDto v) throws IllegalArgumentException {
+    public VoteDto saveVote(VoteCreateDto v) throws IllegalArgumentException {
         Vote vote = mapper.mapFromDto(v);
         Poll poll = vote.getPoll();
         Option option = vote.getOption();

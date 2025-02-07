@@ -35,7 +35,7 @@ public class Mapper {
                 vote.getVotedOn().format(DateTimeFormatter.ISO_DATE_TIME));
     }
 
-    public Vote mapFromDto(VoteDto vote) {
+    public Vote mapFromDto(VoteCreateDto vote) {
         Poll poll = pollRepo.findById(vote.pollId()).orElseThrow();
 
         Option option = poll.getOptions().stream()
