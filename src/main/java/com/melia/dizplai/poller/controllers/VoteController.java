@@ -1,5 +1,6 @@
 package com.melia.dizplai.poller.controllers;
 
+import com.melia.dizplai.poller.dto.VoteCreateDto;
 import com.melia.dizplai.poller.service.VoteService;
 import com.melia.dizplai.poller.dto.VoteDto;
 import lombok.AllArgsConstructor;
@@ -21,7 +22,7 @@ public class VoteController {
     }
 
     @PostMapping
-    VoteDto addVote(@RequestBody VoteDto request) {
+    VoteDto addVote(@RequestBody VoteCreateDto request) {
         return voteService.saveVote(request);
     }
 }
