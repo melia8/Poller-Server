@@ -15,6 +15,9 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class PollController {
 
+    private static final int MIN_OPTIONS = 2;
+    private static final int MAX_OPTIONS = 7;
+
     private final PollService pollService;
 
     @GetMapping()
@@ -34,6 +37,9 @@ public class PollController {
 
     @PostMapping
     PollDto createPoll(@RequestBody PollCreateDto poll) {
+        if (poll.options().size() < MIN_OPTIONS || poll.options().size() > MAX_OPTIONS) {
+            throw new IllegalArgumentException(String.format("Can only define %d to %d options", MIN_OPTIONS, MAX_OPTIONS));
+        }
         return pollService.createPoll(poll);
     }
 }

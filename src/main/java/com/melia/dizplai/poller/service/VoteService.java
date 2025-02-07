@@ -4,18 +4,15 @@ import com.melia.dizplai.poller.domain.Option;
 import com.melia.dizplai.poller.domain.Poll;
 import com.melia.dizplai.poller.domain.Vote;
 import com.melia.dizplai.poller.dto.Mapper;
+import com.melia.dizplai.poller.dto.VoteDto;
 import com.melia.dizplai.poller.repositories.OptionRepository;
 import com.melia.dizplai.poller.repositories.PollRepository;
 import com.melia.dizplai.poller.repositories.VoteRepository;
-import com.melia.dizplai.poller.dto.VoteDto;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @AllArgsConstructor
