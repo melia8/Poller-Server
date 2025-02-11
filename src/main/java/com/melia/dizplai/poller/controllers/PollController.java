@@ -5,7 +5,9 @@ import com.melia.dizplai.poller.dto.PollDto;
 import com.melia.dizplai.poller.dto.VoteDto;
 import com.melia.dizplai.poller.service.PollService;
 import lombok.AllArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.util.List;
 
@@ -23,6 +25,11 @@ public class PollController {
     @GetMapping()
     PollDto getLatestPollData() {
         return pollService.getLatestPoll();
+    }
+
+    @GetMapping(path = "/sse", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+    public SseEmitter subscribe() {
+        return pollService.addEmitter(new SseEmitter(Long.MAX_VALUE));
     }
 
     @GetMapping("/{id}")
